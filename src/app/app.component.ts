@@ -1,10 +1,26 @@
-import { Component } from '@angular/core';
-
+import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
+import { PromptService } from './common/prompt/prompt.service';
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
-  title = 'app';
+export class AppComponent implements OnInit {
+    title = 'app';
+    @ViewChild('prompt', { read: ViewContainerRef }) viewContainerRef: ViewContainerRef;//读取prompt的ViewContainerRef的实例
+
+    constructor(private prompt: PromptService) { };
+
+    ngOnInit() {
+        this.prompt.setRootViewContainerRef(this.viewContainerRef);
+
+        this.prompt.excute('prompt', {
+            title: '确认',
+            icon: 'question-2.svg',
+            tip: '你确定要退出吗？',
+            successCallback() {
+                
+            }
+        })
+    }
 }
