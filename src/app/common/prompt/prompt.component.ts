@@ -4,34 +4,31 @@ import { PromptService } from './prompt.service';
     selector: 'prompt-component',
     template: `
 		<div class="prompt" *ngIf="show && handle != 'tips'">
-			<div class="dialog flex flex-column" [class.showing]="show" [class.hiding]="hiding">
-				<div class="dialog-body flex-1">
-                    <i class="iconfont icon-warning-fill ai-yellow" *ngIf="tipsType == 'warning'"></i>
-                    <i class="iconfont icon-close-fill ai-red" *ngIf="tipsType == 'error'"></i>
-                    <i class="iconfont icon-checked-fill ai-green" *ngIf="tipsType == 'success'"></i>
-					<div class="dialog-content">
-						<h3>{{tip}}</h3>
-						<div *ngIf="otherTip" style="font-size:12px; color:#999;">
+			<div class="prompt-dialog" [class.showing]="show" [class.hiding]="hiding">
+				<div class="prompt-dialog-content">
+                    <i class="iconfont icon-warning-fill icon-yellow" *ngIf="tipsType == 'warning'"></i>
+                    <i class="iconfont icon-close-fill icon-red" *ngIf="tipsType == 'error'"></i>
+                    <i class="iconfont icon-checked-fill icon-green" *ngIf="tipsType == 'success'"></i>
+					<div class="text-content">
+						<h3 class="main-text">{{tip}}</h3>
+						<div class="sub-text" *ngIf="otherTip">
 							{{otherTip}}
 						</div>
 					</div>
 				</div>
-				<div class="dialog-footer">
+				<div class="prompt-footer">
 				    <button class="ip-btn ip-btn-primary" style="height:32px;width:64px;" (click)="fnHandle('successCallback')">确认</button>
                     <button class="ip-btn ip-btn-outline-default" *ngIf="handle == 'prompt'" style="height:32px;width:64px;"  (click)="fnHandle('closeCallback')">取消</button>
 				</div>
 			</div>
 		</div>
-		<div class="hint" [class.show]="show" *ngIf="show && handle == 'tips'">
-			<span>
-                <i class="iconfont icon-warning-fill ai-yellow" *ngIf="tipsType == 'warning'"></i>
-                <i class="iconfont icon-close-fill ai-red" *ngIf="tipsType == 'error'"></i>
-                <i class="iconfont icon-checked-fill ai-green" *ngIf="tipsType == 'success'"></i>
-                {{tip}}
-            </span>
+		<div class="hints" [class.show]="show" *ngIf="show && handle == 'tips'">
+            <i class="iconfont icon-warning-fill icon-yellow" *ngIf="tipsType == 'warning'"></i>
+            <i class="iconfont icon-close-fill icon-red" *ngIf="tipsType == 'error'"></i>
+            <i class="iconfont icon-checked-fill icon-green" *ngIf="tipsType == 'success'"></i>
+            {{tip}}
 		</div>
-	`,
-    styleUrls: ['prompt.component.css']
+	`
 })
 
 export class PromptComponent implements OnInit {
@@ -125,11 +122,12 @@ export class PromptComponent implements OnInit {
     fnHandle(method: any) {
         // debugger
         this[method]();
+
+        this.close();
     }
 
     initFn() {
         this.successCallback = function () { };
         this.closeCallback = function () { };
     }
-
 }

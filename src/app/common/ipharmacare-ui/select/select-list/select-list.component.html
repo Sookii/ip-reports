@@ -1,0 +1,8 @@
+<div class="select-list" #selectListElement style="position: fixed;" [style.top]="position.top" [style.left]="position.left" [style.width]="position.width">
+    <ul>
+        <li (click)="_selectData($event, item)" #selectContent *ngFor="let item of selectListData" class="ant-select-dropdown-menu-item" [class.selected]="containsIn(item)">
+            <i class="anticon anticon-check ai-blue" *ngIf="containsIn(item)"></i>
+            {{item[_that.options.id]}}
+        </li>
+    </ul>
+</div>

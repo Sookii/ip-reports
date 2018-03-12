@@ -1,0 +1,13 @@
+<div #selectElement (click)="clickSelect($event)" [class.ip-select-open]="isSelectArrow" class="ip-select" [style.min-width]="options.minWidth"
+    [style.max-width]="options.maxWidth">
+    <i class="iconfont icon-arrow-down"></i>
+    <span *ngIf="!(selectedItem || (initItem && initItem.length > 0))">{{options.placeholder}}</span>
+    <div *ngIf="!options.multipleSelect">
+        <span>{{selectedItem}}</span>
+    </div>
+    <div *ngIf="options.multipleSelect" class="multi-selection">
+        <span *ngFor="let item of initItem;let i = index;" class="checked-item">{{item[options.id] || item}}
+            <i class="iconfont icon-close icon-gray" (click)="removeItem($event, i)"></i>
+        </span>
+    </div>
+</div>
