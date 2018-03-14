@@ -1,0 +1,44 @@
+.pagesize-info {
+    float: left;
+}
+
+.page-size-container {
+    display: inline-block;
+    width: 50px;
+    border: 1px solid #D9D9D9;
+    position: relative;
+    text-align: center;
+    height: 24px;
+    line-height: 22px;
+    border-radius: 4px;
+    width: 60px;
+    vertical-align: middle;
+}
+
+.pagesize-info .iconfont {
+    float: right;
+    margin-right: 4px;
+    display: inline-block;
+    font-size: 12px;
+    transition: all .3s ease-in-out;
+}
+.pagesize-info .iconfont.show{
+    transform: rotate(-180deg);
+}
+.page-size-list {
+    position: absolute;
+    bottom: 25px;
+    left: -1px;
+    border: 1px solid #D9D9D9;
+    background: #fff;
+    box-shadow: 0 -2px 8px #ddd
+}
+
+.page-size-list li {
+    width: 58px;
+    cursor: pointer;
+}
+
+.page-size-list li:hover {
+    background: #E7F2FA;
+}

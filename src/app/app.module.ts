@@ -1,18 +1,16 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { AuthInterceptorService } from './AuthInterceptor';
+import { httpInterceptorProviders } from './http-interceptors';
+import { AppRoutingModule } from './app.routing.module';
+import { ExtendNavModule } from './common/extend-nav/extend-nav.module';
 
-import { AppRoutingModule } from './app-routing.module';
-
-import { IpRadioModule } from './common/ipharmacare-ui/radio/ip-radio-module';
-import { IpCheckboxModule } from './common/ipharmacare-ui/checkbox/ip-checkbox-module';
-import { IpSelectModule } from './common/ipharmacare-ui/select/ip-select.module';
-import { PopupModule } from './common/popup/popup.module';
-
+import { ConfigService } from './config.service';
 import { AppComponent } from './app.component';
+import { AppService } from './app.service';
 
+//全局提示框
 import { PromptService } from './common/prompt/prompt.service';
 import { PromptComponent } from './common/prompt/prompt.component';
 @NgModule({
@@ -22,19 +20,15 @@ import { PromptComponent } from './common/prompt/prompt.component';
     ],
     imports: [
         BrowserModule,
+        HttpClientModule,
         AppRoutingModule,
-        IpRadioModule,
-        IpCheckboxModule,
-        IpSelectModule,
-        PopupModule
+        ExtendNavModule,
     ],
     providers: [
+        ConfigService,
+        AppService,
         PromptService,
-        {
-            provide: HTTP_INTERCEPTORS,
-            useClass: AuthInterceptorService,
-            multi: true
-        }
+        httpInterceptorProviders
     ],
     bootstrap: [AppComponent],
     entryComponents: [PromptComponent]

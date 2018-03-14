@@ -1,0 +1,42 @@
+{
+  "_from": "ipharmacare-table@^0.33.1",
+  "_id": "ipharmacare-table@0.33.1",
+  "_inBundle": false,
+  "_integrity": "sha512-A3Rvyl7cyp2MoGgXBKxVGF5Xzz0IwYPZ+gP56Ro3Jd+G2E9F8RYOp1gIk0+5cdk2UrdMpUhOw4IV5oZV+diq2w==",
+  "_location": "/ipharmacare-table",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "range",
+    "registry": true,
+    "raw": "ipharmacare-table@^0.33.1",
+    "name": "ipharmacare-table",
+    "escapedName": "ipharmacare-table",
+    "rawSpec": "^0.33.1",
+    "saveSpec": null,
+    "fetchSpec": "^0.33.1"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "http://10.1.1.99:4837/ipharmacare-table/-/ipharmacare-table-0.33.1.tgz",
+  "_shasum": "5851d26ecac58fef8d6ce6f652b933c4fa5a43bb",
+  "_spec": "ipharmacare-table@^0.33.1",
+  "_where": "D:\\yiyao-20180206\\knowledge\\webdev",
+  "author": {
+    "name": "adu"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "逸曜前端团队通用表格组件，基于最早安雯创建国明修改的版本进一步改进",
+  "keywords": [
+    "table"
+  ],
+  "license": "Apache-2.0",
+  "main": "index.js",
+  "name": "ipharmacare-table",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "0.33.1"
+}

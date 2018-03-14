@@ -1,7 +1,38 @@
-<router-outlet></router-outlet>
+<div class="full-fill flex flex-column">
+    <div class="header">
+        <h3 class="title">
+            <i class="iconfont icon-file"></i>
+            报表中心
+        </h3>
+        <ul class="nav">
+            <li>
+                <a class="active">报表查看</a>
+            </li>
+            <li>
+                <a>报表管理</a>
+            </li>
+        </ul>
+        <!---->
+        <div class="user-menu" #menupanel (click)="$event.stopPropagation();menupanelEl.open = !menupanelEl.open">
+            <i class="iconfont icon-user"></i>
+            {{user ? user.realname : '' || user ? user.username : ''}}
+            <div class="menupanel" [hidden]="!menupanelEl.open">
+                <span (click)="_logout()"><i class="triangle"></i>退出登录</span>
+            </div>
+        </div>
+        <div class="extend-nav" extendnav [option]="extendNavCfg">
+            <i class="iconfont icon-menu"></i>
+            更多
+        </div>
+    </div>
+    <div class="flex-1 content">
+        <router-outlet></router-outlet>
+    </div>
+</div>
+
 <template #prompt></template>
 
-<ip-radio [labelText]="'测试1'" [isChecked]="true" [isDisabled]="true" [options]="radioOpt" (onCheck)="radioChange($event)"></ip-radio>
+<!-- <ip-radio [labelText]="'测试1'" [isChecked]="true" [isDisabled]="true" [options]="radioOpt" (onCheck)="radioChange($event)"></ip-radio>
 <ip-radio [labelText]="'测试2'" [isChecked]="false" [options]="radioOpt" (onCheck)="radioChange($event)"></ip-radio>
 
 <ip-checkbox [labelText]="'测试1'" [isChecked]="true" [isDisabled]="true" [options]="radioOpt" (onCheck)="radioChange($event)"></ip-checkbox>
@@ -10,11 +41,4 @@
         123
     </ng-template>
 </ip-checkbox>
-
-<!-- <popup>
-    <ng-template #tpl let-popupInfo>
-        <div>123</div>
-    </ng-template> 
-</popup> -->
-
-<ip-select [options]="typeCfg" [initItem]="'请选择'" [selectListData]="types" ></ip-select>
+<ip-select [options]="typeCfg" [initItem]="'请选择'" [selectListData]="types" ></ip-select> -->

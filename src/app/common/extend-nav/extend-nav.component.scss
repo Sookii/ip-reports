@@ -1,0 +1,60 @@
+.navigationMenupanel {
+    position: absolute;
+    padding: 10px;
+    min-height:50px;
+    min-width: 280px;
+    z-index: 1001;
+    background: #fff;
+    box-shadow: 0 0 2px rgba(0, 0, 0, .33);
+    color: #333;
+    .triangle{
+        border-right: 5px solid transparent;
+        border-bottom: 7px solid #fff;
+        border-left: 5px solid transparent;
+        position: absolute;
+    }
+    ul {
+        &.sys-menu{
+            li {
+                height: 60px;
+                padding: 0 10px;
+                background: #f7f8fa;
+                cursor: pointer;
+                &:hover {
+                    background:  #eaf4ff;
+                }
+                .system-name {
+                    font-size: 16px;
+                    line-height: 30px;
+                    img {
+                        vertical-align: middle;
+                    }
+                }
+                .item-name {
+                    padding-left: 25px;
+                    line-height: 20px;
+                    color: #666;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                }
+            }
+        }
+        &.quick-route{
+            margin-top: 10px;
+            li {
+                height: 60px;
+                padding: 0 10px;
+                background: #f7f8fa;
+                line-height: 60px;
+                color: #999;
+                cursor: pointer;
+                a {
+                    display: inline-block;
+                    text-align: center;
+                }
+            }
+        }
+        
+    }
+}
