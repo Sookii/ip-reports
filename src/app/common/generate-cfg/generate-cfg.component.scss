@@ -1,0 +1,57 @@
+.time-interval {
+    padding: 10px;
+    &.time-interval-only {
+        padding: 30px 10px;
+    }
+}
+
+.input-indicator {
+    border-top: 1px dashed #dee2e6;
+    padding: 10px;
+    > p {
+        margin-bottom: 10px;
+        line-height: 20px;
+        span{
+            color: #F04134;
+            font-size: 12px;
+        }
+    }
+    > div {
+        position: relative;
+        overflow: auto;
+        table {
+            min-width: 100%;
+            th {
+                background: #f2f2f2;
+            }
+            th, td {
+                width: 25%;
+                padding: 5px;
+                border: 1px solid #dee2e6;
+            }
+            td.editable {
+                padding: 0;
+                position: relative;
+                
+                &:hover {
+                    &::before{
+                        content: "\e651";
+                        position: absolute;
+                        right: 10px;
+                        top: 50%;
+                        transform: translate(0, -50%);
+                        color: #108ee9;
+                    }
+                }
+                .ip-input {
+                    border: 0;
+                    border-radius: 0;
+                    &:hover, &:focus, &.active {
+                        box-shadow: 0 0 0 1px #108ee9;
+                    }
+                }
+                
+            }
+        }
+    }
+}

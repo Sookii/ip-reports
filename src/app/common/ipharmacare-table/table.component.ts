@@ -15,7 +15,6 @@ import {
 } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { TableModel } from './table.model';
-import { InterceptorService } from 'ng2-interceptors';
 
 interface ListData {
     code: number,
@@ -55,7 +54,7 @@ export class TableService {
 @Component({
     selector: 'ip-table',
     templateUrl: './table.component.html',
-    styleUrls: ['./table.component.css'],
+    //styleUrls: ['./table.component.css'],
     providers: [
         TableService,
         TableModel
@@ -75,6 +74,19 @@ export class TableComponent implements OnInit, OnChanges {
     pagination: any = {}; //分页信息
 
     pageSizeShow: boolean = false;
+
+    pagesizeCfg: any = {
+        reverseDirection: true,
+        width: '60px',
+        sm: true
+    }
+    pagesizes: any[] = [
+        {name: 10},
+        {name: 20},
+        {name: 50},
+        {name: 100},
+        {name: 200}
+    ]
 
     @HostListener('document:click', ['$event'])
     onClickDoc($event: any) {
@@ -133,7 +145,7 @@ export class TableComponent implements OnInit, OnChanges {
      * 以列表的形式显示数据
     */
     showData(response: any) {
-        let result = response.data || response['results'] || [];
+        let result = response.data || response['results'] || [{id: 123, time: '2223', modify: 'admin', state: 'act'}];
         let contentRef = this.elementRef.nativeElement.children[0];
         let listRef =  contentRef === undefined ? null : contentRef.getElementsByClassName('flex1')[0]
 
@@ -362,14 +374,12 @@ export class TableComponent implements OnInit, OnChanges {
         return true;
     }
 
-    selectSize(size, $event) {
-        this.table.pageSize = size;
+    selectSize(size: any) {
+        this.table.pageSize = size.name;
 
         this.table.currentPage = 1;
 
         this.onChangePageSize();
-
-        $event.stopPropagation();
 
         this.pageSizeShow = false;
     }

@@ -1,0 +1,40 @@
+<div class="popup">
+    <div class="popup-dialog popup-dialog-lg" [class.popup-iframe-box]="options.setHeight"  id="popupSize" [style.width]="options.width" [style.height]="options.height">
+        <div class="popup-header">
+            <a class="close iconfont icon-close" (click)="close()"></a>
+            {{options.title}}
+        </div>
+        <div class="popup-content flex flex-column">
+            <div class="time-interval">
+                时间：<cycle-selected [placeholder]="'开始时间'"></cycle-selected> - <cycle-selected [placeholder]="'结束时间'"></cycle-selected>
+            </div>
+            <div class="flex-1 input-indicator flex flex-column">
+                <p>以下指标值需要手动输入<span>（若不填写，生成报表时手动输入的指标值将以 0 代替）</span></p>
+                <div class="flex-1">
+                    <table [style.width]="rows * 189.5 > 758 ? rows * 189.5 + 'px' : '758px'">
+                        <thead>
+                            <tr>
+                                <th>指标</th>
+                                <th>指标值</th>
+                                <th>指标值</th>
+                                <th>指标值</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>指标1</td>
+                                <td class="editable"><input type="text" class="ip-input"></td>
+                                <td class="editable"><input type="text" class="ip-input"></td>
+                                <td class="editable"><input type="text" class="ip-input"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="popup-footer" *ngIf="!options.hiddenBtn">
+            <button class="ip-btn ip-btn-primary" (click)="submit()"><span>确定</span></button>
+            <button class="ip-btn ip-btn-outline-default" (click)="close()"><span>取消</span></button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,11 @@
+.cycle-selection{
+    position: relative;
+    display: inline-block;
+    .ip-input {
+        width: 160px;
+    }
+    .select-list {
+        position: absolute;
+        z-index: 1;
+    }
+}

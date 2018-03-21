@@ -61,7 +61,7 @@
                                 <input type="checkbox" #checkItem (click)="checkBox(checkItem.checked,trow,$event);" (dblclick)="$event.stopPropagation()"
                                     [checked]="isChecked(trow)">
                             </td>
-                            <template [ngTemplateOutlet]="tableTemplate" [ngTemplateOutletContext]="{ $implicit: trow, index: (line + 1 + (table.currentPage - 1) * table.pageSize)}"></template>
+                            <ng-template [ngTemplateOutlet]="tableTemplate" [ngTemplateOutletContext]="{ $implicit: trow, index: (line + 1 + (table.currentPage - 1) * table.pageSize)}"></ng-template>
                         </tr>
                     </ng-container>
                     <ng-container *ngIf="table.duplicateRow">
@@ -72,7 +72,7 @@
                                     [checked]="isChecked(trow)">
                             </td>
                             <!-- git  <td *ngIf="table.hasCheckbox && line % 2 == 0"><input type="checkbox" #checkItem [checked]="isChecked(trow)"></td> -->
-                            <template [ngTemplateOutlet]="tableTemplate" [ngTemplateOutletContext]="{ $implicit: trow, index: (line + 1 + (table.currentPage - 1) * table.pageSize)}"></template>
+                            <ng-template [ngTemplateOutlet]="tableTemplate" [ngTemplateOutletContext]="{ $implicit: trow, index: (line + 1 + (table.currentPage - 1) * table.pageSize)}"></ng-template>
                         </tr>
                     </ng-container>
                 </tbody>
@@ -83,9 +83,9 @@
         </span>
     </div>
     <div class="pagination">
-        <div class="pagesize-info">
+        <div class="pagesize-info" style="display: inline-block;">
             <span *ngIf="table.itemCountPath">共{{table.totalCount}}条</span>
-            <div class="page-size-container" (click)="pageSizeShow = !pageSizeShow;$event.stopPropagation();">
+            <!-- <div class="page-size-container" (click)="pageSizeShow = !pageSizeShow;$event.stopPropagation();">
                 <span>{{table.pageSize || 10}}</span>
                 <i class="iconfont icon-arrow-down" [class.show]="pageSizeShow"></i>
                 <ul class="page-size-list" *ngIf="pageSizeShow">
@@ -95,7 +95,8 @@
                     <li (click)="selectSize('100',$event)">100</li>
                     <li (click)="selectSize('200',$event)">200</li>
                 </ul>
-            </div>
+            </div> -->
+            <ip-select [options]="pagesizeCfg" [initItem]="'20'" [selectListData]="pagesizes" (selecting)="selectSize($event)"></ip-select>
             条/页
             <span *ngIf="table.pageCountPath">{{table.totalPageCount}}页</span>
         </div>

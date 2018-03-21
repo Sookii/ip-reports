@@ -3,7 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { TableComponent } from './table.component';
 import { TableModel } from './table.model';
-
+import { IpSelectModule } from '../ipharmacare-ui/select/ip-select.module';
 export { TableComponent };
 export { TableModel };
 
@@ -16,7 +16,8 @@ export { TableModel };
     ],
     imports: [
         CommonModule,
-        FormsModule
+        FormsModule,
+        IpSelectModule
     ],
 })
 export class TableModule { }

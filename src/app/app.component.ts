@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ViewContainerRef, HostListener, ElementRef } from '@angular/core';
 import { PromptService } from './common/prompt/prompt.service';
 import { AppService } from './app.service';
+import { UtilsService } from './utils.service';
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
@@ -13,7 +14,8 @@ export class AppComponent implements OnInit {
 
     constructor(
         private prompt: PromptService,
-        private appService: AppService
+        private appService: AppService,
+        private utilsFns: UtilsService
     ) { };
 
     ngOnInit() {
@@ -83,21 +85,11 @@ export class AppComponent implements OnInit {
     
     @HostListener('document:click', ['$event'])
     onClickDoc($event: any) {
-        if (!this.chcekElChain($event.target, this.menupanelEl)) {
+        if (this.menupanelEl['open'] && !this.utilsFns.chcekElChain($event.target, this.menupanelEl)) {
             this.menupanelEl['open'] = false;
         }
     }
-    chcekElChain(_el: any, el: any): any {
-        if (_el == el.nativeElement) {
-            return true;
-        } else {
-            if (!_el.parentElement) {
-                return false;
-            } else {
-                this.chcekElChain(_el.parentElement, el);
-            }
-        }
-    }
+
     _logout() {
         let that = this;
         this.prompt.excute('prompt', {
@@ -109,6 +101,8 @@ export class AppComponent implements OnInit {
         });
     }
     logout() {
-        this.appService.logout().subscribe();
+        this.appService.logout().subscribe(
+            res => {}
+        );
     }
 }

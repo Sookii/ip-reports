@@ -1,0 +1,55 @@
+<div class="full-gap10 flex flex-column report-summary">
+    <div class="header">
+        <h3 class="title">
+            阳光用药抗菌药物上报
+            <a>报表预览</a>
+        </h3>
+    </div>
+    <div class="flex-1 flex">
+        <div class="summary-list">
+            <ul>
+                <li>汇总表</li>
+                <li>自定义统计时间范围</li>
+                <li class="active">2017年12月</li>
+                <li>2017年11月</li>
+                <li>2017年10月</li>
+                <li>2017年9月</li>
+            </ul>
+        </div>
+        <div *ngIf="report" class="flex-1 flex flex-column report-item">
+            <div *ngIf="!report.custom" class="report-state">
+                <span>数据日期：2017-12-01 ~ 2017-12-31</span>
+                <span>生成日期：2018-02-08</span>
+                <div class="panel">
+                    <button class="ip-btn ip-btn-primary" (click)="rebuild()">重新生成</button>
+                    <button class="ip-btn ip-btn-primary" (click)="export()">导出</button>
+                    <button class="ip-btn ip-btn-primary" (click)="exportGraph()">生成图表</button>
+                </div>
+            </div>
+            <!--报表详情-->
+            <div *ngIf="!report.custom" class="flex-1 preview">
+
+            </div>
+            <!--自定义时间报表-->
+            <div *ngIf="report.custom" class="flex-1 flex flex-column custom-report">
+                <div class="mb-10">
+                    <button class="ip-btn ip-btn-outline-default">
+                        <i class="iconfont icon-add icon-blue"></i>
+                        生成新报表
+                    </button>
+                </div>
+                <div class="flex-1">
+                    <ip-table [table]="customReportList">
+                        <ng-template #tableTemplate let-trow let-index="index">
+                            <td>{{trow.id}}</td>
+                            <td>{{trow.time}}</td>
+                            <td>{{trow.modify}}</td>
+                            <td>{{trow.state}}</td>
+                        </ng-template>
+                    </ip-table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<generate-cfg></generate-cfg>

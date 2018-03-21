@@ -4,9 +4,39 @@ import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 import { catchError, retry } from 'rxjs/operators';
 
 @Injectable()
-export class ConfigService {
+export class UtilsService {
     constructor() {
     }
+    /**
+     * 搜索条件序列化
+     */
+    serializeParams(searchParams: any): String {
+        let searchStr = '';
+
+        for(let attr in searchParams) {
+            if(searchParams[attr]){
+                searchStr += `${searchStr.indexOf('?') < 0 ? '?' : '&'}${attr}=${searchParams[attr]}`;
+            }
+        }
+
+        return searchStr;
+    }
+
+    /**
+     * 冒泡检查是否点击了某个元素或其子元素
+     */
+    chcekElChain(_el: any, el: any): boolean {
+        if (_el == el.nativeElement) {
+            return true;
+        } else {
+            if (!_el.parentElement) {
+                return false;
+            } else {
+                return this.chcekElChain(_el.parentElement, el);
+            }
+        }
+    }
+
     /**
      * ajax 预处理方法
      */

@@ -26,7 +26,8 @@ export class Position {
 		return {
 			left: Math.round(targetOffset.left - parentOffset.left) + 'px',
 			top: Math.round(targetOffset.bottom - parentOffset.top) + 'px',
-			width: Math.round(targetOffset.width) + 'px'
+            width: Math.round(targetOffset.width) + 'px',
+            height: Math.round(targetOffset.height) + 'px'
 		};
 	}
 

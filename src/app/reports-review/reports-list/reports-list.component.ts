@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ReportsListService } from './repotts-list.service';
+import { UtilsService } from '../../utils.service';
 @Component({
     templateUrl: './reports-list.component.html',
     styleUrls: ['./reports-list.component.scss'],
@@ -8,9 +9,17 @@ import { ReportsListService } from './repotts-list.service';
     ]
 })
 export class ReportsListComponent implements OnInit {
+    searchParams: any = new Object();
+    //分类选项配置
+    reportTypes: any[] = [
+        { name: 123 },
+        { name: 456 }
+    ]
+
 
     constructor(
-        private reportsListService: ReportsListService
+        private reportsListService: ReportsListService,
+        private utilsFns: UtilsService
     ) { };
 
     ngOnInit() {
@@ -21,58 +30,25 @@ export class ReportsListComponent implements OnInit {
     productsTable: any = {
         title: [
             {
-                id: 'chineseproductname',
-                name: '产品名称',
-                width: '9.09%',
+                id: 'type',
+                name: '分类',
+                width: '30%',
             },
             {
-                id: 'goodsname',
-                name: '商品名称',
-                width: '9.09%'
+                id: 'name',
+                name: '报表名称',
+                width: '50%'
             },
             {
-                id: 'formulation',
-                name: '剂型',
-                width: '9.09%',
-            },
-            {
-                id: 'chinesespecification',
-                name: '规格',
-                width: '9.09%'
-            },
-            {
-                id: 'registerno',
-                name: '批准文号',
-                width: '9.09%'
-            },
-            {
-                id: 'chinesemanufacturename',
-                name: '生产厂家',
-                width: '9.09%'
-            },
-            {
-                id: 'propertyText',
-                name: '产品属性',
-                width: '9.09%'
-            },
-            {
-                id: 'transspecification',
-                name: '转换规格',
-                width: '9.09%'
-            },
-            {
-                id: 'ddd',
-                name: 'ddd值',
-                width: '9.09%'
-            },
-            {
-                id: 'enabled',
-                name: '产品状态',
-                width: '9.09%'
+                id: 'counts',
+                name: '已生成数量',
+                width: '20%',
             }
         ],
-        url: "/api/v1/mapProduct?numPerPage={pageSize}&pageNum={currentPage}",
-        hasCheckbox: true,
-        // duplicateRow: true
+        url: "/api/v1/mapProduct?numPerPage={pageSize}&pageNum={currentPage}"
+    }
+
+    search() {
+        let conditions = this.utilsFns.serializeParams(this.searchParams);
     }
 }

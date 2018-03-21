@@ -1,11 +1,18 @@
 import { Component, OnInit, OnChanges, OnDestroy, Input, Output, ViewChild, ViewChildren, ElementRef, EventEmitter, ComponentRef, ComponentFactoryResolver, ViewContainerRef, HostListener } from '@angular/core';
-import { Position, layoutFixed } from './position';
+import { Position, layout } from './position';
 import { SelectListComponent } from './select-list/select-list.component';
 @Component({
     selector: 'ip-select',
     templateUrl: './select.component.html',
+    styles: [`
+        :host {
+            display: inline-block;
+            position: relative;
+        }
+    `]
 })
 export class SelectComponent implements OnInit {
+    pDomEl: any;
     isSelectArrow: boolean = false;
     isContent: any;
     cache: any;
@@ -38,7 +45,7 @@ export class SelectComponent implements OnInit {
 
 
     ngOnInit() {
-        this.options = Object.assign({ id: 'name', minWidth: '80px' }, this.options);
+        this.options = Object.assign({ id: 'name', minWidth: '60px' }, this.options);
         if (this.options.multipleSelect) {
             this.multipleSelect = true;
             if(!this.options.key) this.options.key = 'id';
@@ -82,7 +89,7 @@ export class SelectComponent implements OnInit {
 
     
     ViewInit() {
-        this.position = layoutFixed(this.selectElement.nativeElement);
+        this.position = layout(this.selectElement.nativeElement);
         if (this.cache && this.cache.instance) {
             this.cache.instance.show(this, this.position, this.selectListElement, this.isSelectArrow);
             return;
@@ -109,11 +116,12 @@ export class SelectComponent implements OnInit {
         });
     }
 
-    clickSelect($event:any){
+    clickSelect($event:any, selectElement: any){
+        this.pDomEl = selectElement.parentNode;
         this.isSelectArrow = !this.isSelectArrow;
         this.ViewInit();
         if(this.isSelectArrow === false) {
-            window.document.body.removeChild(this.selectListElement);
+            this.pDomEl.removeChild(this.selectListElement);
         }
     }
     removeItem($event: any, idx: number){

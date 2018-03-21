@@ -1,0 +1,10 @@
+<div #cycleSelection class="cycle-selection">
+    <input class="ip-input disabled" [(ngModel)]="selection" (click)="toggle($event)" placeholder="{{placeholder}}" readonly>
+    <div *ngIf="isChecking" class="select-list">
+        <ul>
+            <li (click)="select($event, item)" *ngFor="let item of selections">
+                {{item}}
+            </li>
+        </ul>
+    </div>
+</div>

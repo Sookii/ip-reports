@@ -4,7 +4,7 @@ import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 import { catchError, retry } from 'rxjs/operators';
 import { UtilsService } from '../../utils.service';
 @Injectable()
-export class ReportsListService {
+export class ReportsSummaryService {
     constructor(
         private http: HttpClient,
         private utilsFns: UtilsService

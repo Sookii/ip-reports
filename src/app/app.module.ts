@@ -6,7 +6,7 @@ import { httpInterceptorProviders } from './http-interceptors';
 import { AppRoutingModule } from './app.routing.module';
 import { ExtendNavModule } from './common/extend-nav/extend-nav.module';
 
-import { ConfigService } from './config.service';
+import { UtilsService } from './utils.service';
 import { AppComponent } from './app.component';
 import { AppService } from './app.service';
 
@@ -25,7 +25,7 @@ import { PromptComponent } from './common/prompt/prompt.component';
         ExtendNavModule,
     ],
     providers: [
-        ConfigService,
+        UtilsService,
         AppService,
         PromptService,
         httpInterceptorProviders
