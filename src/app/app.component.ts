@@ -1,4 +1,6 @@
 import { Component, OnInit, ViewChild, ViewContainerRef, HostListener, ElementRef } from '@angular/core';
+import { Location } from '@angular/common';
+import { Router, NavigationEnd } from '@angular/router';
 import { PromptService } from './common/prompt/prompt.service';
 import { AppService } from './app.service';
 import { UtilsService } from './utils.service';
@@ -9,14 +11,30 @@ import { UtilsService } from './utils.service';
 })
 export class AppComponent implements OnInit {
     user: any = new Object();
+    /**
+     * 主导航
+     */
+    navList: any[] = [
+        { title: '报表查看', routerLink: 'review' },
+        { title: '报表管理', routerLink: 'manage' }
+    ]
+
     @ViewChild('menupanel') menupanelEl: any;
     @ViewChild('prompt', { read: ViewContainerRef }) viewContainerRef: ViewContainerRef;//读取prompt的ViewContainerRef的实例
 
     constructor(
+        private location: Location,
+        private router: Router,
         private prompt: PromptService,
         private appService: AppService,
         private utilsFns: UtilsService
-    ) { };
+    ) {
+        this.router.events.subscribe((event) => {
+            if (event instanceof NavigationEnd) {
+                this.reSetActiveNav(event.url);
+            }
+        });
+    };
 
     ngOnInit() {
         this.prompt.setRootViewContainerRef(this.viewContainerRef);
@@ -25,7 +43,21 @@ export class AppComponent implements OnInit {
 
         this.getUserInfo();
 
-        this.getRightTopResources();
+        this.getExtendNav();
+    }
+
+
+    /**
+     * 重定位 nav
+     */
+    reSetActiveNav(path: string) {
+        this.navList.forEach((nav, idx) => {
+            if (path.indexOf(nav.routerLink) >= 0) {
+                nav.active = true;
+            } else {
+                nav.active = false;
+            }
+        })
     }
 
     /**
@@ -47,7 +79,7 @@ export class AppComponent implements OnInit {
     /*
     * 获取更多导航栏信息
     */
-    getRightTopResources() {
+   getExtendNav() {
         this.appService.getExtendNav()
             .subscribe(res => {
                 if (res['code'] == '200') {
@@ -77,15 +109,15 @@ export class AppComponent implements OnInit {
     getUserInfo() {
         this.appService.getUserInfo()
             .subscribe(res => {
-                if(res['code'] == '200') {
+                if (res['code'] == '200') {
                     this.user = res['data'];
                 }
             })
     }
-    
+
     @HostListener('document:click', ['$event'])
     onClickDoc($event: any) {
-        if (this.menupanelEl['open'] && !this.utilsFns.chcekElChain($event.target, this.menupanelEl)) {
+        if (this.menupanelEl && this.menupanelEl['open'] && !this.utilsFns.chcekElChain($event.target, this.menupanelEl)) {
             this.menupanelEl['open'] = false;
         }
     }
@@ -102,7 +134,7 @@ export class AppComponent implements OnInit {
     }
     logout() {
         this.appService.logout().subscribe(
-            res => {}
+            res => { }
         );
     }
 }

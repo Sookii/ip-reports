@@ -1,0 +1,10 @@
+.select-list {
+    position: absolute;
+    z-index: 1;
+    &.bl, &.tl {
+        left: 0;
+    }
+    &.br, &.tr {
+        right: 0;
+    }
+}

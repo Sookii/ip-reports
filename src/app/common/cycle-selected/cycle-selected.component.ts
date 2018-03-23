@@ -10,7 +10,7 @@ export class CycleSelectedComponent implements OnInit {
     @Input() options: any = {};
     @Output() onCheck = new EventEmitter();
     @ViewChild('cycleSelection') selfEl: ElementRef;
-    selections: string[] = [];
+    cycles: string[] = [];
     selection: string;
     isChecking: boolean = false;
 
@@ -19,11 +19,11 @@ export class CycleSelectedComponent implements OnInit {
     ngOnInit() {
         this.options = Object.assign({ type: 'Monthly' }, this.options);        //Monthly => 月度报表; Quarterly => 季度报表
 
-        this.getSelections(this.options.type);
+        this.getCycles(this.options.type);
     }
 
     //生成周期选项
-    getSelections(type: string) {
+    getCycles(type: string) {
         let date = new Date();
         let currentMonth = date.getMonth();
         let currentYear = date.getFullYear();
@@ -31,12 +31,12 @@ export class CycleSelectedComponent implements OnInit {
         if (type == 'Monthly') {
             for (let i = 0; i < 15; i++) {
                 let _date = new Date(currentYear, currentMonth - i, 1);
-                this.selections.push(`${_date.getFullYear()}年${_date.getMonth() + 1}月`);
+                this.cycles.push(`${_date.getFullYear()}年${_date.getMonth() + 1}月`);
             }
         } else {
             for (let i = 1; i < 5; i++) {
                 let _date = new Date(currentYear, currentMonth - 3 * i, 1);
-                this.selections.push(this.getQuarter(_date.getFullYear(), _date.getMonth()));
+                this.cycles.push(this.getQuarter(_date.getFullYear(), _date.getMonth()));
             }
         }
     }

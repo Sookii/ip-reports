@@ -21,9 +21,12 @@
                 <span>数据日期：2017-12-01 ~ 2017-12-31</span>
                 <span>生成日期：2018-02-08</span>
                 <div class="panel">
-                    <button class="ip-btn ip-btn-primary" (click)="rebuild()">重新生成</button>
-                    <button class="ip-btn ip-btn-primary" (click)="export()">导出</button>
+                    <button class="ip-btn ip-btn-primary" (click)="rebuild()" tooltip="重新生成">重新生成</button>
+                    <button class="ip-btn ip-btn-primary" (click)="export()" tooltip="导出">导出</button>
                     <button class="ip-btn ip-btn-primary" (click)="exportGraph()">生成图表</button>
+                    <tooltip>
+                        <button class="ip-btn ip-btn-primary">666</button>
+                    </tooltip>
                 </div>
             </div>
             <!--报表详情-->
@@ -52,4 +55,4 @@
         </div>
     </div>
 </div>
-<generate-cfg></generate-cfg>
+<!--<generate-cfg></generate-cfg>-->

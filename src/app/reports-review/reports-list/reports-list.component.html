@@ -1,13 +1,15 @@
 <div class="full-gap10 flex flex-column">
     <div class="search-panel form-inline">
         <div class="form-group">
-            分类：<ip-select [options]="reportTypes" [initItem]="'请选择'" [selectListData]="reportTypes" ></ip-select>
+            分类：
+            <ip-select [options]="reportTypes" [initItem]="'请选择'" [selectListData]="reportTypes"></ip-select>
         </div>
         <div class="form-group">
-            报表名称：<input type="text" class="ip-input">
+            报表名称：
+            <input type="text" class="ip-input">
         </div>
         <button class="ip-btn ip-btn-outline-default" (click)="search()">
-            <i class="iconfont icon-search"></i>
+            <i class="iconfont icon-search icon-blue"></i>
             <span>搜索</span>
         </button>
     </div>

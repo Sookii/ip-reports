@@ -1,0 +1,76 @@
+<div class="full-gap10 flex flex-column">
+    <div class="search-panel form-inline">
+        <div class="form-group">
+            分类：
+            <ip-select [options]="reportTypes" [initItem]="'请选择'" [selectListData]="reportTypes"></ip-select>
+        </div>
+        <div class="form-group">
+            报表模板：
+            <input type="text" class="ip-input">
+        </div>
+        <button class="ip-btn ip-btn-outline-default" (click)="search()">
+            <i class="iconfont icon-search icon-blue"></i>
+            <span>搜索</span>
+        </button>
+    </div>
+    <div class="flex-1 flex flex-column report-manage-form">
+        <div class="btn-panel">
+            <button class="ip-btn ip-btn-outline-default">
+                <i class="iconfont icon-add icon-blue"></i>
+                新建报表模板
+            </button>
+            <button class="ip-btn ip-btn-outline-default">
+                <i class="iconfont icon-modify icon-blue"></i>
+                管理报表分类
+            </button>
+            <switch [(ngModel)]="status" [color]="'#30bd7d'">
+                <span checked>显示</span>
+                <span unchecked>隐藏</span>
+            </switch>
+            <dropdown #dropdown>
+                <a class="ip-dropdown" [class.active]="dropdown._visible">
+                    更多
+                    <i class="iconfont icon-arrow-down icon-blue"></i>
+                </a>
+                <ul class="list" menu>
+                    <li (click)="copyReport({})">复制</li>
+                    <li (click)="deletReport({})">删除</li>
+                    <li (click)="moveTo({})">移动到</li>
+                </ul>
+            </dropdown>
+        </div>
+        <div class="flex-1">
+            <ip-table [table]="reportsManageTable">
+                <ng-template let-node let-index="index">
+                    <td>{{node.type}}</td>
+                    <td>{{node.name}}</td>
+                    <td>{{node.modify}}</td>
+                    <td>{{node.updateTime}}</td>
+                    <td>{{node.counts}}</td>
+                    <td>
+                        <switch [(ngModel)]="status" [color]="'#30bd7d'">
+                            <span checked>显示</span>
+                            <span unchecked>隐藏</span>
+                        </switch>
+                    </td>
+                    <td>
+                        <a (click)="previewReport(node)">预览</a>
+                        <a (click)="editReport(node)">编辑</a>
+                        <dropdown #dropdown>
+                            <a class="ip-dropdown" [class.active]="dropdown._visible">
+                                更多
+                                <i class="iconfont icon-arrow-down icon-blue"></i>
+                            </a>
+                            <ul class="list" menu>
+                                <li (click)="copyReport(node)">复制</li>
+                                <li (click)="deletReport(node)">删除</li>
+                                <li (click)="moveTo(node)">移动到</li>
+                            </ul>
+                        </dropdown>
+                    </td>
+                </ng-template>
+            </ip-table>
+        </div>
+    </div>
+</div>
+<types-manage></types-manage>

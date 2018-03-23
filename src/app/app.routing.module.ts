@@ -3,6 +3,10 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
     {
+        path: 'manage',
+        loadChildren: './reports-manage/reports-manage.module#ReportsReviewModule'
+    },
+    {
         path: 'review',
         loadChildren: './reports-review/reports-review.module#ReportsReviewModule'
     },

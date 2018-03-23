@@ -1,0 +1,18 @@
+$border-color: #dee2e6;
+.search-panel {
+    padding: 10px 0;
+    .form-inline {
+        display: inline-block;
+    }
+}
+.report-manage-form {
+    background: #fff;
+    .btn-panel {
+        padding: 10px;
+        border: 1px solid $border-color;
+        border-bottom: 0;
+    }
+    > div.flex-1 {
+        position: relative;
+    }
+}

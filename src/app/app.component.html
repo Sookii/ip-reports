@@ -5,11 +5,8 @@
             报表中心
         </h3>
         <ul class="nav">
-            <li>
-                <a class="active">报表查看</a>
-            </li>
-            <li>
-                <a>报表管理</a>
+            <li *ngFor="let nav of navList">
+                <a [routerLink]="nav.routerLink" [class.active]="nav.active">{{nav.title}}</a>
             </li>
         </ul>
         <!---->
@@ -31,14 +28,3 @@
 </div>
 
 <template #prompt></template>
-
-<!-- <ip-radio [labelText]="'测试1'" [isChecked]="true" [isDisabled]="true" [options]="radioOpt" (onCheck)="radioChange($event)"></ip-radio>
-<ip-radio [labelText]="'测试2'" [isChecked]="false" [options]="radioOpt" (onCheck)="radioChange($event)"></ip-radio>
-
-<ip-checkbox [labelText]="'测试1'" [isChecked]="true" [isDisabled]="true" [options]="radioOpt" (onCheck)="radioChange($event)"></ip-checkbox>
-<ip-checkbox [labelText]="'测试2'" [isChecked]="false" [options]="radioOpt" (onCheck)="radioChange($event)">
-    <ng-template let-extendInfo>
-        123
-    </ng-template>
-</ip-checkbox>
-<ip-select [options]="typeCfg" [initItem]="'请选择'" [selectListData]="types" ></ip-select> -->

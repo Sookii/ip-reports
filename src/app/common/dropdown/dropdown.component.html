@@ -1,0 +1,8 @@
+<div #ipDropdown class="ip-dropdown-wrap">
+    <ng-content></ng-content>
+    <ng-container *ngIf="_visible">
+        <div class="select-list" [class.active]="_visible" [ngClass]="_position" [style.bottom]="_position == 'tl' || _position == 'tr' ? _hostElOffsetHeight : ''">
+            <ng-content select="[menu]"></ng-content>
+        </div>
+    </ng-container>
+</div>

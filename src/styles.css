@@ -19,7 +19,7 @@ html, body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, p
 
 body, button, input, select, textarea {
     /* for ie */
-    font: 14px/1 Tahoma, Helvetica, Arial, 'Microsoft YaHei', "\5b8b\4f53", sans-serif, "iconfont";
+    font: 14px/1 Tahoma, Helvetica, Arial, 'Microsoft YaHei', "\5b8b\4f53", sans-serif;
     /* 用 ascii 字符表示，使得在任何编码下都无问题 */
 }
 
@@ -1139,48 +1139,52 @@ input[type='radio']:disabled::before, input[type='radio'].disabled::before {
 }
 
 .select-list {
-    width: 160px;
-    max-height: 142px;
+    min-width: 140px;
     overflow: auto;
+    background: #fff;
+    max-height: 142px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
     border: 1px solid #dee2e6;
     border-radius: 0.25rem;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+ul.list, .list ul {
     background: #fff;
 }
 
-.select-list ul {
-    background: #fff;
-}
-
-.select-list ul li {
+ul.list li, .list ul li {
     padding: 5px;
     line-height: 25px;
     background: #fff;
 }
 
-.select-list ul li i.iconfont {
+ul.list li i.iconfont, .list ul li i.iconfont {
     float: right;
     font-size: 12px;
 }
 
-.select-list ul li:not(.disabled), .select-list ul li:not(.disabled).checked {
+ul.list li.odd, .list ul li.odd {
+    background: #F5F5F5;
+}
+
+ul.list li:not(.disabled), ul.list li:not(.disabled).checked, .list ul li:not(.disabled), .list ul li:not(.disabled).checked {
     cursor: pointer;
 }
 
-.select-list ul li:not(.disabled):hover, .select-list ul li:not(.disabled).checked:hover {
-    background: rgba(16, 142, 233, 0.2);
+ul.list li:not(.disabled):hover, ul.list li:not(.disabled).checked:hover, .list ul li:not(.disabled):hover, .list ul li:not(.disabled).checked:hover {
+    background: rgba(16, 142, 233, 0.2) !important;
 }
 
-.select-list ul li:not(.disabled).checked {
+ul.list li:not(.disabled).checked, .list ul li:not(.disabled).checked {
     background: rgba(16, 142, 233, 0.1);
 }
 
-.select-list ul li.disabled {
+ul.list li.disabled, .list ul li.disabled {
     color: #adb5bd;
     background: #e9ecef;
 }
 
-.select-list ul li.disabled.checked {
+ul.list li.disabled.checked, .list ul li.disabled.checked {
     background: rgba(11, 98, 161, 0.1);
 }
 
@@ -1196,6 +1200,34 @@ input[type='radio']:disabled::before, input[type='radio'].disabled::before {
     font-size: 1rem;
     line-height: 1.5;
     border-radius: 0.3rem;
+}
+
+.ip-dropdown-wrap {
+    position: relative;
+    display: inline-block;
+}
+
+.ip-dropdown-wrap .ip-dropdown {
+    display: inline-block;
+    padding: 5px;
+    transition: all .5s ease-in-out;
+}
+
+.ip-dropdown-wrap .ip-dropdown i.iconfont {
+    font-size: 12px;
+}
+
+.ip-dropdown-wrap .ip-dropdown.out-line {
+    border: 1px solid #dee2e6;
+    border-radius: 0.25rem;
+}
+
+.ip-dropdown-wrap .ip-dropdown.out-line:hover, .ip-dropdown-wrap .ip-dropdown.out-line.active {
+    border-color: #108EE9;
+}
+
+.ip-dropdown-wrap .ip-dropdown.active i.iconfont {
+    transform: rotate(-180deg);
 }
 
 /***自定义弹窗***/

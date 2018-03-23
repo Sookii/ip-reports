@@ -1,0 +1,23 @@
+<div class="popup">
+    <div class="popup-dialog">
+        <div class="popup-header">
+            <a class="close iconfont icon-close" (click)="close()"></a>
+            管理分类
+        </div>
+        <div class="popup-content flex flex-column">
+            <div class="add-type">
+                添加分类：
+                <input type="text" class="ip-input" placeholder="请输入2~40个字符">
+                <button class="ip-btn ip-btn-outline-default">
+                    <i class="iconfont icon-add icon-blue"></i>
+                    <span>添加</span>
+                </button>
+            </div>
+            <div class="flex-1 type-list">
+                <ul class="list">
+                    <li *ngFor="let item of types;let i = index;" [class.odd]="i%2 == 1">{{item.name}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

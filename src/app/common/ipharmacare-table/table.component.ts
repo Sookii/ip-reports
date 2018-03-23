@@ -65,6 +65,7 @@ export class TableComponent implements OnInit, OnChanges {
     @Input() condition: string = "";
     @Input() isFixedHeader: boolean;
     @Input() noInit: boolean = false;
+    @Input() borderType: string = 'normal';         //vertical  horizontal
     @Output() emitPagination = new EventEmitter();
     @ContentChild('tableTemplate') tableTemplate: any;
 

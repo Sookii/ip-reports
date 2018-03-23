@@ -2,7 +2,7 @@
     <input class="ip-input disabled" [(ngModel)]="selection" (click)="toggle($event)" placeholder="{{placeholder}}" readonly>
     <div *ngIf="isChecking" class="select-list">
         <ul>
-            <li (click)="select($event, item)" *ngFor="let item of selections">
+            <li (click)="select($event, item)" *ngFor="let item of cycles">
                 {{item}}
             </li>
         </ul>

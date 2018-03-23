@@ -8,6 +8,9 @@ import { IpCheckboxModule } from './ipharmacare-ui/checkbox/ip-checkbox-module';
 import { IpSelectModule } from './ipharmacare-ui/select/ip-select.module';
 import { PopupModule } from './popup/popup.module';
 import { TableModule } from './ipharmacare-table/table.module';
+import { TooltipModule } from './tooltip/tooltip.module';
+import { SwitchModule } from './switch/switch.module';
+import { DropdownModule } from './dropdown/dropdown.module';
 //共享组件
 
 @NgModule({
@@ -18,7 +21,10 @@ import { TableModule } from './ipharmacare-table/table.module';
         IpCheckboxModule,
         IpSelectModule,
         PopupModule,
-        TableModule
+        TableModule,
+        TooltipModule,
+        SwitchModule,
+        DropdownModule
     ],
     declarations: [
         
@@ -30,7 +36,10 @@ import { TableModule } from './ipharmacare-table/table.module';
         IpCheckboxModule,
         IpSelectModule,
         PopupModule,
-        TableModule
+        TableModule,
+        TooltipModule,
+        SwitchModule,
+        DropdownModule
     ],
 })
 export class SharedModule { }
