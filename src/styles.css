@@ -1240,7 +1240,7 @@ ul.list li.disabled.checked, .list ul li.disabled.checked {
     left: 0;
     overflow: hidden;
     background: rgba(255, 255, 255, 0.5);
-    z-index: 10001;
+    z-index: 1001;
 }
 
 .popup-iframe {
@@ -1251,7 +1251,7 @@ ul.list li.disabled.checked, .list ul li.disabled.checked {
     left: 0;
     overflow: hidden;
     background: rgba(255, 255, 255, 0.5);
-    z-index: 10001;
+    z-index: 1001;
 }
 
 .popup-dialog {
@@ -1288,6 +1288,9 @@ ul.list li.disabled.checked, .list ul li.disabled.checked {
     font-size: 14px;
     border-bottom: 1px solid #dee2e6;
     background: #f5f5f5;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .popup-dialog .popup-header a, .popup-dialog .popup-header .close {
@@ -1344,7 +1347,7 @@ ul.list li.disabled.checked, .list ul li.disabled.checked {
     left: 0;
     overflow: hidden;
     background: rgba(255, 255, 255, 0.5);
-    z-index: 10001;
+    z-index: 1001;
 }
 
 .prompt-dialog {

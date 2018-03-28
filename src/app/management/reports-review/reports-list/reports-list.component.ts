@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ReportsListService } from './repotts-list.service';
-import { UtilsService } from '../../utils.service';
+import { UtilsService } from '../../../utils.service';
 @Component({
     templateUrl: './reports-list.component.html',
     styleUrls: ['./reports-list.component.scss'],

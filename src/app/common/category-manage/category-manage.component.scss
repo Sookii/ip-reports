@@ -1,0 +1,44 @@
+.add-type {
+    padding: 10px;
+    border-bottom: 1px solid #dee2e6;
+    input.ip-input {
+        width: 350px;
+    }
+}
+.warning-bar {
+    padding: 5px 10px;
+    background: #fffaeb;
+    border: 1px solid #ffe9a7;
+    line-height: 20px;
+    color: #666;
+    .close {
+        float: right;
+        font-size: 12px;
+        cursor: pointer;
+        &:hover {
+            color: #F04134;
+        }
+    }
+}
+.type-list {
+    overflow: auto;
+    li {
+        * {
+            vertical-align: middle;
+        }
+        line-height: 28px;
+        input.ip-input {
+            width: 300px;
+        }
+        a.iconfont {
+            display: none;
+            padding: 0 3px;
+            font-size: 13px;
+        }
+        &:hover {
+            a.iconfont {
+                display: inline-block;
+            }
+        }
+    }
+}

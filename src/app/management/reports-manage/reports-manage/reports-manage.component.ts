@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UtilsService } from '../../utils.service';
+import { UtilsService } from '../../../utils.service';
 @Component({
     templateUrl: './reports-manage.component.html',
     styleUrls: ['./reports-manage.component.scss'],
@@ -12,6 +12,15 @@ export class ReportsManageComponent implements OnInit {
         { name: 456 }
     ]
 
+    /**
+     * 分类管理参数
+     */
+    handle: string;                 // manage & move
+    visible: boolean = false;       
+    title: string;
+
+
+    /**测试属性 */
     status: true;
 
     constructor(
@@ -22,10 +31,21 @@ export class ReportsManageComponent implements OnInit {
 
     }
 
+    /**测试方法 */
     getStatus() {
         console.log(this.status)
     }
 
+    /**
+     * 报表分类管理
+     */
+    manageTypes() {
+        this.visible = true;
+    }
+
+    /**
+     * 报表列表以及管理
+     */
     reportsManageTable: any = {
         title: [
             {

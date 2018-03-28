@@ -19,7 +19,8 @@
       "prefix": "app",
       "styles": [
         "styles.css",
-        "fonts/font-icon.css"
+        "fonts/font-icon.css",
+        "../node_modules/dragula/dist/dragula.css"
       ],
       "scripts": [],
       "environmentSource": "environments/environment.ts",

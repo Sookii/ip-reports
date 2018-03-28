@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ReportsSummaryService } from './reports-summary.service';
-import { UtilsService } from '../../utils.service';
-import { PromptService } from '../../common/prompt/prompt.service';
+import { UtilsService } from '../../../utils.service';
+import { PromptService } from '../../../common/prompt/prompt.service';
 @Component({
     templateUrl: './reports-summary.component.html',
     styleUrls: ['./reports-summary.component.scss'],

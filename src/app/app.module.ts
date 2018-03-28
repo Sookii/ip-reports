@@ -4,7 +4,6 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { httpInterceptorProviders } from './http-interceptors';
 import { AppRoutingModule } from './app.routing.module';
-import { ExtendNavModule } from './common/extend-nav/extend-nav.module';
 
 import { UtilsService } from './utils.service';
 import { AppComponent } from './app.component';
@@ -21,8 +20,7 @@ import { PromptComponent } from './common/prompt/prompt.component';
     imports: [
         BrowserModule,
         HttpClientModule,
-        AppRoutingModule,
-        ExtendNavModule,
+        AppRoutingModule
     ],
     providers: [
         UtilsService,

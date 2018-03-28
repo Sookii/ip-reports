@@ -1,0 +1,25 @@
+<div class="full-fill flex flex-column">
+    <div class="header">
+        <button class="ip-btn ip-btn-lg ip-btn-outline-default">退出编辑</button>
+        <ul class="nav">
+            <li *ngFor="let nav of navList;let i = index;">
+                <a [routerLink]="nav.routerLink" [class.active]="progress == (i + 1)" (click)="switchProgress(i + 1)">
+                    <span class="step-idx">{{i + 1}}</span>
+                    {{nav.title}}
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="flex-1 content">
+        <!--基本信息-->
+        <basic-info [basicInfo]="reportTemplate.basicInfo"></basic-info>
+    </div>
+    <div class="edit-bottom">
+        <button *ngIf="step > 1" class="ip-btn ip-btn-lg ip-btn-outline-default">
+            <span>上一步</span>
+        </button>
+        <button *ngIf="step < 4" class="ip-btn ip-btn-lg ip-btn-primary">
+            <span>下一步</span>
+        </button>
+    </div>
+</div>

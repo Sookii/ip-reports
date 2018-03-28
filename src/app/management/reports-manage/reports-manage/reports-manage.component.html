@@ -15,11 +15,11 @@
     </div>
     <div class="flex-1 flex flex-column report-manage-form">
         <div class="btn-panel">
-            <button class="ip-btn ip-btn-outline-default">
+            <button class="ip-btn ip-btn-outline-default" [routerLink]="'/create-report/edit/1'">
                 <i class="iconfont icon-add icon-blue"></i>
                 新建报表模板
             </button>
-            <button class="ip-btn ip-btn-outline-default">
+            <button class="ip-btn ip-btn-outline-default" (click)="manageTypes()">
                 <i class="iconfont icon-modify icon-blue"></i>
                 管理报表分类
             </button>
@@ -64,7 +64,7 @@
                             <ul class="list" menu>
                                 <li (click)="copyReport(node)">复制</li>
                                 <li (click)="deletReport(node)">删除</li>
-                                <li (click)="moveTo(node)">移动到</li>
+                                <li (click)="checkTarget(node)">移动到</li>
                             </ul>
                         </dropdown>
                     </td>
@@ -73,4 +73,4 @@
         </div>
     </div>
 </div>
-<types-manage></types-manage>
+<category-manage [(visible)]="visible" [title]="title" [handle]="handle" (onSubmit)="moveTo(target)"></category-manage>

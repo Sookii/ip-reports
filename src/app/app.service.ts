@@ -5,6 +5,7 @@ import { catchError, retry } from 'rxjs/operators';
 import { UtilsService } from './utils.service';
 @Injectable()
 export class AppService {
+    user: any;
     constructor(
         private http: HttpClient,
         private utilsFns: UtilsService

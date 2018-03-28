@@ -11,7 +11,8 @@ import { TableModule } from './ipharmacare-table/table.module';
 import { TooltipModule } from './tooltip/tooltip.module';
 import { SwitchModule } from './switch/switch.module';
 import { DropdownModule } from './dropdown/dropdown.module';
-//共享组件
+//共享功能模块
+import { CategoryManageModule } from './category-manage/category-manage.module';
 
 @NgModule({
     imports: [
@@ -24,7 +25,9 @@ import { DropdownModule } from './dropdown/dropdown.module';
         TableModule,
         TooltipModule,
         SwitchModule,
-        DropdownModule
+        DropdownModule,
+
+        CategoryManageModule
     ],
     declarations: [
         
@@ -39,7 +42,9 @@ import { DropdownModule } from './dropdown/dropdown.module';
         TableModule,
         TooltipModule,
         SwitchModule,
-        DropdownModule
+        DropdownModule,
+
+        CategoryManageModule
     ],
 })
 export class SharedModule { }

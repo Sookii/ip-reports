@@ -24,6 +24,8 @@ export class UtilsService {
 
     /**
      * 冒泡检查是否点击了某个元素或其子元素
+     * @param _el => 点击元素
+     * @param el => 目标元素
      */
     chcekElChain(_el: any, el: any): boolean {
         if (_el == el.nativeElement) {
