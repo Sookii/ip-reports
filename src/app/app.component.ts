@@ -24,7 +24,7 @@ export class AppComponent implements OnInit {
 
         this.appService.login().subscribe();
 
-        this.getUserInfo();
+        //this.getUserInfo();
     }
 
     /**

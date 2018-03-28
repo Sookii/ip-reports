@@ -46,9 +46,10 @@
         }
     }
     .content {
+        position: relative;
         margin: 10px;
+        overflow: auto;
         background: #fff;
-        box-shadow: 0 0 10px rgba(0, 0, 0, .25);
     }
     .edit-bottom {
         height: 50px;

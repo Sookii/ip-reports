@@ -1,0 +1,46 @@
+<div class="choose-dimension flex flex-column">
+    <div class="dimension-form">
+        <h3 class="title">筛选</h3>
+        <div class="flex">
+            <label>统计维度：</label>
+            <div class="ip-btn-group">
+                <button *ngFor="let item of businessDiamensions" class="ip-btn ip-btn-outline-default" [class.active]="item.id == reportConstructor.businessDimensionId"
+                    (click)="checkBusinessDimension(item)">
+                    <span>{{item.name}}</span>
+                </button>
+            </div>
+        </div>
+        <div class="flex">
+            <label>数据维度：</label>
+            <div class="ip-btn-group">
+                <button *ngFor="let item of dataDiamensions" class="ip-btn ip-btn-outline-default" [class.active]="item.id == reportConstructor.dataDimensionId"
+                    (click)="checkDataDimension(item)">
+                    <span>{{item.name}}</span>
+                </button>
+            </div>
+            <span *ngIf="reportConstructor.businessDimensionId == 3" class="dept-check">
+                <ip-radio [labelText]="'门诊'" (onCheck)="checkCategory($event, item)"></ip-radio>
+                <ip-radio [labelText]="'住院'" (onCheck)="checkCategory($event, item)"></ip-radio>
+            </span>
+        </div>
+    </div>
+    <div class="flex-1 flex">
+        <div class="flex-1 template-display flex flex-column">
+            <div class="template-tips">
+                <i class="iconfont icon-info-fill icon-blue"></i>
+                当前选择维度：{{_template && _template.name}}
+            </div>
+            <div class="snapshot-list row">
+                <div class="col-3" [class.col-4]="reportConstructor.businessDimensionId == 1" *ngFor="let template of templatesAvailable">
+                    <div class="snapshot" [class.checked]="_template == template" (click)="checkTemplate(template)">
+                        <div class="snapshot-img">{{template.id + '.jpg'}}</div>
+                        <p>{{template.name}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="reportConstructor.businessDimensionId == 1" class="data-range">
+            123
+        </div>
+    </div>
+</div>

@@ -11,7 +11,6 @@ export class RadioComponent implements OnInit {
     @Input() isDisabled: boolean;
     @Output() onCheck: EventEmitter<any> = new EventEmitter<any>();
 
-    radioName: string = 'name';
     constructor() { }
 
     ngOnInit() {

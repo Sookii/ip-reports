@@ -3,6 +3,35 @@ import { Location } from '@angular/common';
 import { Router, ActivatedRoute } from '@angular/router';
 import { PromptService } from '../common/prompt/prompt.service';
 import { AppService } from '../app.service';
+
+export class ReportTemplate {
+    cycle: number;
+    categoryId: number;
+    categoryName: string;
+    reportId: number;
+    reportName: string;
+    displayName: string;
+    createUsername: string;
+    createUserid: string;
+    updateTime: number;
+    discription: string;
+    isSystem: number;
+    isDeleted: number;
+    isHidden: number;
+    businessDimensionId: number;
+    dataDimensionId: number;
+    category: string;
+    circle: string;
+    showType: number; // 1, 2
+    showLayout: string; //编辑模板
+    constructor() {
+        this.cycle = 1;
+        this.categoryId = 1;
+        this.businessDimensionId = 1;
+        this.dataDimensionId = 1;
+    }
+}
+
 @Component({
     templateUrl: './create-report.component.html',
     styleUrls: ['./create-report.component.scss']
@@ -11,11 +40,7 @@ export class CreateReportComponent implements OnInit {
     /**
      * 模板对象
      */
-    reportTemplate: any = new Object();
-    /**
-     * 编辑进度 修改默认为4
-     */
-    progress: number = 1;
+    reportTemplate: any = new ReportTemplate();
     /**
      * 当前编辑阶段
      */
@@ -40,7 +65,7 @@ export class CreateReportComponent implements OnInit {
         //根据路径解析编辑进度
         this.route.params.subscribe(params => {
             if (params['step']) {
-                this.progress = parseInt(params['step']);
+                this.step = parseInt(params['step']);
             }
         })
     }
@@ -63,14 +88,16 @@ export class CreateReportComponent implements OnInit {
     }
 
     /**
-     * 切换编辑阶段  tips: 只可切换至已完成编辑或正在编辑的阶段。
-     * @param step 
+     * 退出编辑
      */
-    switchProgress(step: number) {
-        if (this.progress < step) {
-            return;
-        } else {
-            this.step = step;
-        }
+    quiteEdit() {
+        let that = this;
+        this.prompt.excute('prompt', {
+            tip: '确定要退出编辑吗？',
+            otherTip: '退出后当前操作将不被保存。',
+            successCallback() {
+                that.router.navigate(['/management/reports-manage/report-manage']);
+            }
+        })
     }
 }

@@ -1,0 +1,21 @@
+.basic-info-form {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    width: 700px;
+    .form-group {
+        padding: 5px 0;
+        * {
+            vertical-align: middle;
+        }
+        > label {
+            display: inline-block;
+            width: 80px;
+            padding: 4px 0;
+            line-height: 20px;
+            text-align: right;
+        }
+    }
+}

@@ -39,12 +39,6 @@ export class ManagementComponent implements OnInit {
     };
 
     ngOnInit() {
-        this.prompt.setRootViewContainerRef(this.viewContainerRef);
-
-        //this.appService.login().subscribe();
-
-        //this.getUserInfo();
-
         this.getExtendNav();
     }
 

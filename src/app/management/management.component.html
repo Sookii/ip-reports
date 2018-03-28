@@ -12,7 +12,7 @@
         <!---->
         <div class="user-menu" #menupanel (click)="$event.stopPropagation();menupanelEl.open = !menupanelEl.open">
             <i class="iconfont icon-user"></i>
-            {{user ? user.realname : '' || user ? user.username : ''}}
+            {{user ? user.realname : '' || user ? user.username : '未登录'}}
             <div class="menupanel" [hidden]="!menupanelEl.open">
                 <span (click)="_logout()"><i class="triangle"></i>退出登录</span>
             </div>

@@ -548,6 +548,7 @@ table {
 .ip-btn-group .ip-btn {
     flex: 0 0 auto;
     border-radius: 0;
+    margin: 0 -1px;
 }
 
 .ip-btn-group .ip-btn:first-child {
@@ -562,7 +563,7 @@ table {
     border-top-right-radius: 0.25rem;
 }
 
-.ip-btn-group .ip-btn:focus, .ip-btn-group .ip-btn:active, .ip-btn-group .ip-btn.focus, .ip-btn-group .ip-btn.active {
+.ip-btn-group .ip-btn:focus, .ip-btn-group .ip-btn:active, .ip-btn-group .ip-btn.focus, .ip-btn-group .ip-btn.active, .ip-btn-group .ip-btn:hover {
     z-index: 1;
 }
 
@@ -1087,7 +1088,8 @@ input[type='radio']:disabled::before, input[type='radio'].disabled::before {
 
 .ip-radio-wrapper, .ip-checkbox-wrapper {
     display: inline-block;
-    padding: 5px;
+    padding: 6px;
+    cursor: pointer;
 }
 
 .ip-select {
